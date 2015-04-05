@@ -8,8 +8,7 @@ class TestDecomposition(unittest.TestCase):
 
     def assertArrEq(self, arr1, arr2):
         """
-        Função que verifica se dois numpy.array
-        são iguais
+        Função que verifica se dois numpy.array são iguais
         """
         self.assertEqual(list(arr1), list(arr2))
 
