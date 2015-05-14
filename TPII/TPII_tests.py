@@ -27,7 +27,7 @@ class TestDecomposition(unittest.TestCase):
         """ Convoluçao de p[n] * q[n]
         p[n] = /  1,  x = -1               q[n] = /  2,  x = 0
                |  2,  x = 0                       |  3,  x = 1
-               |  1,  x = 1                       | -2, x = 2
+               |  1,  x = 1                       | -2,  x = 2
                \  0,  caso contrário              \  0,  caso contrário
         """
         sig1 = DSignal(-1, [  1,  2,  1])
@@ -54,10 +54,10 @@ class TestDecomposition(unittest.TestCase):
                |  1,  x = -3                      \  0,  caso contrário
                \  0,  caso contrário              
         """
-        sig1 = DSignal( 0, [  5,  0,  1])
-        sig2 = DSignal( 0, [  4,  2])
+        sig1 = DSignal( 0, [  2,  0,  1, -1,  0, -2])
+        sig2 = DSignal( 0, [  1,  1,  1,  1])
         sig3 = sig1 ** sig2
-        self.assertArrEq(sig3.img, np.convolve([5, 0, 1], [4, 2]))
+        self.assertArrEq(sig3.img, np.convolve([2, 0, 1, -1, 0, -2], [1, 1, 1, 1]))
 
 
 if __name__ == '__main__':

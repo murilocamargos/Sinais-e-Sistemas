@@ -8,10 +8,6 @@ O segundo trabalho prático da disciplina Sinais e Sistemas consistiu na  imple-
 mentação de um algoritmo em Python para realização da convolução entre dois si-
 nais de tempo discreto (finitos).
 
-Referências
-+ https://docs.python.org/2/reference/datamodel.html#object.__getitem__
-+ http://docs.scipy.org/doc/numpy/reference/generated/numpy.convolve.html
-+ https://github.com/murilocamargos/sinais-e-sistemas/blob/master/TPI
 """
 
 import numpy as np
@@ -160,7 +156,6 @@ class DSignal(object):
         # do instante inicial da convolução.
         sig2.dom += domConv[0] - 1
         
-
         yn = []
         for n in domConv:
             # movimenta o domínio de sig2 de uma em uma unidade até chegar no
@@ -207,16 +202,13 @@ class DSignal(object):
         # Para imprimir os gráficos dos três sinais, conv deve ser True e o obj
         # deve possuir os sinais 1 e 2 salvos nos atributos.
         if conv == True and type(self.sig1) == DSignal and type(self.sig2) == DSignal:
-            sig1 = self.sig1
-            sig2 = self.sig2
-        
             fig, ((ax1,ax2,ax3)) = plt.subplots(1, 3, sharex='col', sharey='row')
             
-            ax1.stem(sig1.dom, sig1.img, linefmt='b')
+            ax1.stem(self.sig1.dom, self.sig1.img, linefmt='b')
             ax1.set_title('Signal 1')
             ax1.axis(axis(sig1.dom, sig1.img))
             
-            ax2.stem(sig2.dom, sig2.dom)
+            ax2.stem(self.sig2.dom, self.sig2.img)
             ax2.set_title('Signal 2')
             ax2.axis(axis(sig2.dom, sig2.img))
         
