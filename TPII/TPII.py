@@ -4,9 +4,9 @@ Created on Thu May 14 08:57:44 2015
 
 @author: Murilo Camargos
 
-O segundo trabalho prático da disciplina Sinais e Sistemas consistiu na criação
-de um algoritmo em Python para realização da convolução entre  dois  sinais  de
-tempo discreto.
+O segundo trabalho prático da disciplina Sinais e Sistemas consistiu na  imple-
+mentação de um algoritmo em Python para realização da convolução entre dois si-
+nais de tempo discreto (finitos).
 
 Referências
 + https://docs.python.org/2/reference/datamodel.html#object.__getitem__
@@ -65,6 +65,10 @@ class DSignal(object):
             # dade do conjunto imagem.
             self.dom = np.arange(dom, dom + len(self.img))
         elif type(dom) in [list, tuple, np.ndarray]:
+            # Não deixa que o usuário insira um conjunto de domínio com cardina-
+            # lidade diferente ao conjunto imagem.
+            if len(dom) != len(self.img):
+                raise ValueError("The domain set must have the same size of the image set.")
             self.dom = np.array(dom)
         else:
             raise ValueError('You must provide a list, tuple or numpy.array.')
